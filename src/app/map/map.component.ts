@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeafletDirective } from '@asymmetrik/ngx-leaflet';
+import { Position } from '@capacitor/geolocation';
 import { ViewDidEnter } from '@ionic/angular';
 import { latLng, Map, tileLayer } from 'leaflet';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DeviceInformationService } from '../device-information.service';
 import { MapMarker } from '../map-marker/map-marker.component';
 import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
 
@@ -33,9 +37,17 @@ export class MapComponent implements OnInit, ViewDidEnter {
 
   readonly msMarker = ms;
 
-  constructor() {}
+  position$!: Observable<MapMarker>;
 
-  ngOnInit() {}
+  constructor(
+    private readonly deviceInformationService: DeviceInformationService
+  ) {}
+
+  ngOnInit() {
+    this.position$ = this.deviceInformationService
+      .getCurrentLocation()
+      .pipe(map((p) => ({ lat: p.coords.latitude, lng: p.coords.longitude })));
+  }
 
   ionViewDidEnter(): void {
     setTimeout(() => this.map.getMap().invalidateSize(), 100);
