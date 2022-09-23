@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LeafletDirective } from '@asymmetrik/ngx-leaflet';
+import { ViewDidEnter } from '@ionic/angular';
 import { latLng, Map, tileLayer } from 'leaflet';
 
 @Component({
@@ -6,7 +8,10 @@ import { latLng, Map, tileLayer } from 'leaflet';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, ViewDidEnter {
+  @ViewChild(LeafletDirective)
+  map!: LeafletDirective;
+
   options = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -22,7 +27,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {}
 
-  mapReady(map: Map) {
-    setTimeout(() => map.invalidateSize(), 1000);
+  ionViewDidEnter(): void {
+    setTimeout(() => this.map.getMap().invalidateSize(), 100);
   }
 }
