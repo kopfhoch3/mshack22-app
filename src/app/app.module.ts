@@ -8,9 +8,16 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map/map.component';
+import { MapMarkerComponent } from './map-marker/map-marker.component';
+import { TreeMapMarkerComponent } from './tree-map-marker/tree-map-marker.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent],
+  declarations: [
+    AppComponent,
+    MapComponent,
+    MapMarkerComponent,
+    TreeMapMarkerComponent,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

@@ -2,6 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeafletDirective } from '@asymmetrik/ngx-leaflet';
 import { ViewDidEnter } from '@ionic/angular';
 import { latLng, Map, tileLayer } from 'leaflet';
+import { MapMarker } from '../map-marker/map-marker.component';
+import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
+
+const ms: TreeMapMarker = {
+  lat: 51.58,
+  lng: 7.38,
+  status: 'good',
+};
 
 @Component({
   selector: 'app-map',
@@ -22,6 +30,8 @@ export class MapComponent implements OnInit, ViewDidEnter {
     zoom: 10,
     center: latLng(51.58, 7.38),
   };
+
+  readonly msMarker = ms;
 
   constructor() {}
 
