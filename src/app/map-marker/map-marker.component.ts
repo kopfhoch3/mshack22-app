@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { circle, latLng, Layer } from 'leaflet';
 
 export interface MapMarker {
-  lat: number;
-  lng: number;
+  readonly lat: number;
+  readonly lng: number;
 }
 
 @Component({
@@ -13,13 +13,15 @@ export interface MapMarker {
 })
 export class MapMarkerComponent implements OnInit {
   @Input()
-  point!: MapMarker;
+  marker!: MapMarker;
 
   layer: Layer;
 
   constructor() {}
 
   ngOnInit() {
-    this.layer = circle(latLng(this.point.lat, this.point.lng), { radius: 20 });
+    this.layer = circle(latLng(this.marker.lat, this.marker.lng), {
+      radius: 20,
+    });
   }
 }

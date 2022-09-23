@@ -3,10 +3,12 @@ import { LeafletDirective } from '@asymmetrik/ngx-leaflet';
 import { ViewDidEnter } from '@ionic/angular';
 import { latLng, Map, tileLayer } from 'leaflet';
 import { MapMarker } from '../map-marker/map-marker.component';
+import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
 
-const ms: MapMarker = {
+const ms: TreeMapMarker = {
   lat: 51.58,
   lng: 7.38,
+  status: 'good',
 };
 
 @Component({
