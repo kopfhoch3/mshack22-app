@@ -1,5 +1,9 @@
 <ion-content>
   <div class="map" leaflet [leafletOptions]="options">
+    <app-map-marker
+      *ngIf="position$ | async as pos"
+      [marker]="pos"
+    ></app-map-marker>
     <app-map-marker [marker]="msMarker"></app-map-marker>
     <app-tree-map-marker [marker]="msMarker"></app-tree-map-marker>
   </div>
