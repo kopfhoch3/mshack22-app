@@ -1,0 +1,7 @@
+{
+  "name": "mshack-22-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
