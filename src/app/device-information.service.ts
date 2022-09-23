@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
 import { CallbackID, Geolocation, Position, WatchPositionCallback } from '@capacitor/geolocation';
 import { Device } from '@capacitor/device';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceInformationService {
 
-  public async getCurrentLocation(): Promise<Position> {
-    return await Geolocation.getCurrentPosition({
+  public getCurrentLocation(): Observable<Position> {
+    return from(Geolocation.getCurrentPosition({
       enableHighAccuracy: true,
-    });
+    }));
   }
 
-  public async watchLocation(callback: WatchPositionCallback): Promise<CallbackID> {
-    return Geolocation.watchPosition({
+  public watchLocation(callback: WatchPositionCallback): Observable<CallbackID> {
+    return from(Geolocation.watchPosition({
       enableHighAccuracy: true,
-    }, callback);
+    }, callback));
   }
 
-  public async cancelLocationWatch(callbackId: CallbackID): Promise<void> {
-    return Geolocation.clearWatch({
+  public cancelLocationWatch(callbackId: CallbackID): Observable<void> {
+    return from(Geolocation.clearWatch({
       id: callbackId,
-    });
+    }));
   }
 
-  public async getDeviceId(): Promise<string> {
-    return (await Device.getId()).uuid;
+  public getDeviceId(): Observable<string> {
+    return from(Device.getId()).pipe(
+      map(deviceId => deviceId.uuid)
+    );
   }
 
 }

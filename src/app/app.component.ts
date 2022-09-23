@@ -24,12 +24,12 @@ export class AppComponent implements OnInit {
   public currentLocation?: Position;
   
   ngOnInit(): void {
-    this.deviceInformationService.getDeviceId().then(id => {
+    this.deviceInformationService.getDeviceId().subscribe(id => {
       this.deviceId = id;
     });
 
     this.deviceInformationService.watchLocation((position: Position | null, err?: any) => {
       this.currentLocation = position;
-    })
+    });
   }
 }
