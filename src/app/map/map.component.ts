@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DeviceInformationService } from '../device-information.service';
 import { MapMarker } from '../map-marker/map-marker.component';
+import { examplePopup } from '../poi-popup/poi-popup.component';
 import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
 
 const ms: TreeMapMarker = {
@@ -36,6 +37,7 @@ export class MapComponent implements OnInit, ViewDidEnter {
   };
 
   readonly msMarker = ms;
+  readonly poi = examplePopup;
 
   position$!: Observable<MapMarker>;
 

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { icon, Icon, latLng, Layer, marker, Point } from 'leaflet';
 import { MapMarker } from '../map-marker/map-marker.component';
 
-type TreeStatus = 'critical' | 'warn' | 'good';
+export type TreeStatus = 'critical' | 'warn' | 'good';
 
 export interface TreeMapMarker extends MapMarker {
   readonly status: TreeStatus;

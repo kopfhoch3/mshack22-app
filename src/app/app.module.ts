@@ -12,6 +12,7 @@ import { MapMarkerComponent } from './map-marker/map-marker.component';
 import { TreeMapMarkerComponent } from './tree-map-marker/tree-map-marker.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeviceIdInterceptorService } from './global/device-id-interceptor.service';
+import { PoiPopupComponent } from './poi-popup/poi-popup.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DeviceIdInterceptorService } from './global/device-id-interceptor.servi
     MapComponent,
     MapMarkerComponent,
     TreeMapMarkerComponent,
+    PoiPopupComponent,
   ],
   imports: [
     BrowserModule,
