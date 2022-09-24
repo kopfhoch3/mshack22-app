@@ -1,16 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { TreeStatus } from '../tree-map-marker/tree-map-marker.component';
 
 export interface PoiPopupData {
   treeFamily: string;
   status: TreeStatus;
   imageUrl: string;
+  icon?: IconName;
 }
 
-export const examplePopup: PoiPopupData = {
-  treeFamily: 'Ginko',
+export const examplePopupTrash: PoiPopupData = {
+  treeFamily: 'Müll',
   status: 'good',
-  imageUrl: '/assets/IMG_6612.jpg',
+  imageUrl: '/assets/IMG_7867.jpg',
+  icon: 'trash-can',
 };
 
 @Component({

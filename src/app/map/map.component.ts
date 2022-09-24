@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { LeafletDirective } from '@asymmetrik/ngx-leaflet';
 import { Position } from '@capacitor/geolocation';
 import { ViewDidEnter } from '@ionic/angular';
@@ -8,7 +8,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { DeviceInformationService } from '../device-information.service';
 import { MapMarker } from '../map-marker/map-marker.component';
-import { examplePopup, PoiPopupData } from '../poi-popup/poi-popup.component';
+import {
+  examplePopupTrash,
+  PoiPopupData,
+} from '../poi-popup/poi-popup.component';
 import { Tree } from '../model/tree';
 import { TreeService } from '../services/tree.service';
 import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
@@ -37,6 +40,7 @@ export class MapComponent implements ViewDidEnter {
 
   showFilter = false;
   showTree?: TreeMapMarker;
+  showTrash?: PoiPopupData;
 
   center$ = new BehaviorSubject([51.95219038758362, 7.638897986978916]);
   position$!: Observable<MapMarker>;
@@ -46,7 +50,8 @@ export class MapComponent implements ViewDidEnter {
   constructor(
     private readonly deviceInformationService: DeviceInformationService,
     private readonly treeService: TreeService,
-    private readonly pointService: PoiService
+    private readonly pointService: PoiService,
+    private readonly ngZone: NgZone
   ) {}
 
   public loadMarkers(leafletMap: L.Map) {
@@ -86,7 +91,7 @@ export class MapComponent implements ViewDidEnter {
         trees.forEach((tree) => {
           const icon =
             tree.type === 'wastecare' ? trashMarkerIcon : giftMarkerIcon;
-          L.marker(
+          const m = L.marker(
             {
               lat: tree.location.y,
               lng: tree.location.x,
@@ -94,7 +99,13 @@ export class MapComponent implements ViewDidEnter {
             {
               icon,
             }
-          ).addTo(leafletMap);
+          );
+          m.on('click', () => {
+            this.ngZone.run(() => {
+              this.showTrash = examplePopupTrash;
+            });
+          });
+          m.addTo(leafletMap);
         });
       });
   }

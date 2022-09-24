@@ -5,7 +5,7 @@
     [leafletOptions]="options"
     (leafletCenterChange)="centerChange($event)"
     (leafletMapReady)="loadMarkers($event)"
-    (click)="showTree = undefined"
+    (click)="showTree = undefined; showTrash = undefined"
   >
     <app-map-marker
       *ngIf="position$ | async as pos"
@@ -29,6 +29,11 @@
   <app-poi-popup
     *ngIf="showTree"
     [data]="poiDataFromTree(showTree)"
+    class="poi"
+  ></app-poi-popup>
+  <app-poi-popup
+    *ngIf="showTrash"
+    [data]="showTrash"
     class="poi"
   ></app-poi-popup>
 </ion-content>
