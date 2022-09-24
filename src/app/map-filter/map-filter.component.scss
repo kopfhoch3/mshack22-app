@@ -1,0 +1,46 @@
+.filter-container {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+  margin-left: 1rem;
+  min-height: 6rem;
+}
+
+.primary-button {
+  color: white;
+  background-color: var(--color-primary);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  border-radius: 100%;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  &:hover {
+    background-color: var(--color-primary-light) !important;
+  }
+
+  fa-icon {
+    stroke: white;
+    color: white;
+  }
+
+  &.water {
+    background-color: var(--color-filter-water);
+  }
+  &.waste {
+    background-color: var(--color-filter-waste);
+  }
+  &.gift {
+    background-color: var(--color-filter-gift);
+  }
+  &.tree {
+    background-color: var(--color-filter-tree);
+  }
+  &.shop {
+    background-color: var(--color-filter-shop);
+  }
+}

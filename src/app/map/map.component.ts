@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeafletDirective } from '@asymmetrik/ngx-leaflet';
 import { Position } from '@capacitor/geolocation';
 import { ViewDidEnter } from '@ionic/angular';
-import { latLng, Map, tileLayer } from 'leaflet';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { LatLng, latLng, Map, tileLayer } from 'leaflet';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { DeviceInformationService } from '../device-information.service';
 import { MapMarker } from '../map-marker/map-marker.component';
 import { Tree } from '../model/tree';
@@ -31,6 +31,9 @@ export class MapComponent implements OnInit, ViewDidEnter {
     center: latLng(51.95219038758362, 7.638897986978916),
   };
 
+  showFilter = false;
+
+  center$ = new BehaviorSubject([51.95219038758362, 7.638897986978916]);
   position$!: Observable<MapMarker>;
   treesMarker$!: Observable<TreeMapMarker[]>;
 
@@ -44,11 +47,12 @@ export class MapComponent implements OnInit, ViewDidEnter {
       .getCurrentLocation()
       .pipe(map((p) => ({ lat: p.coords.latitude, lng: p.coords.longitude })));
 
-    this.treesMarker$ = this.treeService.getAll$().pipe(
+    this.treesMarker$ = this.center$.pipe(
+      switchMap((p) => this.treeService.getByRadius$(p[0], p[1], 1000)),
       map((trees) =>
         trees.map((t) => ({
-          lat: t.coordinates[1],
-          lng: t.coordinates[0],
+          lat: t.location.y,
+          lng: t.location.x,
           status: 'good',
           treeFamily: t.treeFamily,
         }))
@@ -58,5 +62,13 @@ export class MapComponent implements OnInit, ViewDidEnter {
 
   ionViewDidEnter(): void {
     setTimeout(() => this.map.getMap().invalidateSize(), 100);
+  }
+
+  toggleShowFilter() {
+    this.showFilter = !this.showFilter;
+  }
+
+  centerChange(latLng: LatLng) {
+    this.center$.next([latLng.lng, latLng.lat]);
   }
 }

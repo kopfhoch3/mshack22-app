@@ -1,5 +1,5 @@
 export type Tree = Readonly<{
   id: string;
   treeFamily: string;
-  coordinates: number[];
+  location: { x: number; y: number };
 }>;

@@ -1,5 +1,10 @@
-<ion-content>
-  <div class="map" leaflet [leafletOptions]="options">
+<ion-content class="content">
+  <div
+    class="map"
+    leaflet
+    [leafletOptions]="options"
+    (leafletCenterChange)="centerChange($event)"
+  >
     <app-map-marker
       *ngIf="position$ | async as pos"
       [marker]="pos"
@@ -9,4 +14,13 @@
       [marker]="t"
     ></app-tree-map-marker>
   </div>
+  <div
+    class="primary-button filter-switch"
+    [ngClass]="{ on: showFilter }"
+    (click)="toggleShowFilter()"
+  >
+    <fa-icon icon="filter" size="2xl"></fa-icon>
+  </div>
+
+  <app-map-filter class="filter" *ngIf="showFilter"></app-map-filter>
 </ion-content>
