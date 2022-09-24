@@ -12,6 +12,10 @@ import { MapMarkerComponent } from './map-marker/map-marker.component';
 import { TreeMapMarkerComponent } from './tree-map-marker/tree-map-marker.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeviceIdInterceptorService } from './global/device-id-interceptor.service';
+import { FontAwesomeModule, FaIconLibrary, FaConfig } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/pro-solid-svg-icons';
+import { fal } from '@fortawesome/pro-light-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { DeviceIdInterceptorService } from './global/device-id-interceptor.servi
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FontAwesomeModule,
     LeafletModule,
     HttpClientModule,
   ],
@@ -37,4 +42,14 @@ import { DeviceIdInterceptorService } from './global/device-id-interceptor.servi
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(
+    private readonly library: FaIconLibrary,
+    private readonly faConfig: FaConfig,
+    ) { 
+      this.faConfig.defaultPrefix = 'fal';
+		library.addIconPacks(fas, fab, fal);
+	}
+
+}
