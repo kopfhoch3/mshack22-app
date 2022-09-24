@@ -43,4 +43,7 @@
   &.shop {
     background-color: var(--color-filter-shop);
   }
+  &.inactive {
+    background-color: gray !important;
+  }
 }

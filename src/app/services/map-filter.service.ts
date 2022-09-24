@@ -14,7 +14,7 @@ export class MapFilterService {
   map = new BehaviorSubject(<FilterToggleMap>{
     water: false,
     waste: false,
-    tree: false,
+    tree: true,
     shop: false,
     gift: false,
   });

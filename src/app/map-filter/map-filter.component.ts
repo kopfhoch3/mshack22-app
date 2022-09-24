@@ -35,4 +35,13 @@ export class MapFilterComponent implements OnInit {
     filter[poiType] = !filterMap[poiType];
     this.mapFilterService.patchFilter(filter);
   }
+
+  filterClass(name: string, inactive: boolean) {
+    const filter = {};
+    filter[name] = true;
+    return {
+      ...filter,
+      inactive,
+    };
+  }
 }
