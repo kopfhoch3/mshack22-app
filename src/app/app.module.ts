@@ -22,6 +22,7 @@ import { fas } from '@fortawesome/pro-solid-svg-icons';
 import { fal } from '@fortawesome/pro-light-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { MapFilterComponent } from './map-filter/map-filter.component';
+import { FeedSelectorComponent } from './feed-selector/feed-selector.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MapFilterComponent } from './map-filter/map-filter.component';
     TreeMapMarkerComponent,
     PoiPopupComponent,
     MapFilterComponent,
+    FeedSelectorComponent,
   ],
   imports: [
     BrowserModule,

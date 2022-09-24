@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: white;
+  color: black;
+}
+
+p {
+  padding-inline: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  &.active {
+    background-color: green;
+    border-radius: 1rem;
+  }
+}
