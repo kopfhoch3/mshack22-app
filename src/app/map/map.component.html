@@ -4,6 +4,7 @@
     leaflet
     [leafletOptions]="options"
     (leafletCenterChange)="centerChange($event)"
+    (click)="showTree = undefined"
   >
     <app-map-marker
       *ngIf="position$ | async as pos"
@@ -14,7 +15,6 @@
       [marker]="t"
       (showEmitter)="setShowOverMap($event)"
     ></app-tree-map-marker>
-    <app-poi-popup *ngIf="showovermap" [data]="poi" class="poi"></app-poi-popup>
   </div>
   <div
     class="primary-button filter-switch"
@@ -25,4 +25,9 @@
   </div>
 
   <app-map-filter class="filter" *ngIf="showFilter"></app-map-filter>
+  <app-poi-popup
+    *ngIf="showTree"
+    [data]="poiDataFromTree(showTree)"
+    class="poi"
+  ></app-poi-popup>
 </ion-content>

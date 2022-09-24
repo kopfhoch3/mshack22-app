@@ -1,13 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TreeStatus } from '../tree-map-marker/tree-map-marker.component';
 
-export interface PoiPopupData{
+export interface PoiPopupData {
   treeFamily: string;
   status: TreeStatus;
   imageUrl: string;
 }
 
-export const examplePopup: PoiPopupData = {treeFamily: 'Ahorn', status: 'good', imageUrl: ''};
+export const examplePopup: PoiPopupData = {
+  treeFamily: 'Ginko',
+  status: 'good',
+  imageUrl: '/assets/IMG_6612.jpg',
+};
 
 @Component({
   selector: 'app-poi-popup',
@@ -15,11 +19,9 @@ export const examplePopup: PoiPopupData = {treeFamily: 'Ahorn', status: 'good', 
   styleUrls: ['./poi-popup.component.scss'],
 })
 export class PoiPopupComponent implements OnInit {
-
   @Input() data!: PoiPopupData;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }

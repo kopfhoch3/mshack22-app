@@ -1,6 +1,33 @@
 .container {
   display: flex;
   justify-content: space-between;
-  margin-right: 5%;
-  margin-left: 5%;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.primary-button {
+  color: white;
+  background-color: var(--color-filter-tree);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  border-radius: 100%;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  fa-icon {
+    stroke: white;
+    color: white;
+  }
+  &:hover {
+    background-color: var(--color-filter-tree-light);
+  }
 }

@@ -18,6 +18,7 @@ import {
   Point,
 } from 'leaflet';
 import { MapMarker } from '../map-marker/map-marker.component';
+import { Tree } from '../model/tree';
 
 export type TreeStatus = 'critical' | 'warn' | 'good';
 
@@ -36,9 +37,7 @@ export class TreeMapMarkerComponent implements OnInit {
   marker!: TreeMapMarker;
 
   @Output()
-  showEmitter = new EventEmitter<boolean>();
-
-  showS = false;
+  showEmitter = new EventEmitter<TreeMapMarker>();
 
   layer!: Layer;
 
@@ -56,8 +55,7 @@ export class TreeMapMarkerComponent implements OnInit {
       color: 'green',
     }).on('click', () => {
       this.ngZone.run(() => {
-        this.showS = !this.showS;
-        this.showEmitter.emit(this.showS);
+        this.showEmitter.next(this.marker);
       });
     });
   }

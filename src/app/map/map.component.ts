@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { DeviceInformationService } from '../device-information.service';
 import { MapMarker } from '../map-marker/map-marker.component';
-import { examplePopup } from '../poi-popup/poi-popup.component';
+import { examplePopup, PoiPopupData } from '../poi-popup/poi-popup.component';
 import { Tree } from '../model/tree';
 import { TreeService } from '../services/tree.service';
 import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
@@ -34,8 +34,8 @@ export class MapComponent implements OnInit, ViewDidEnter {
 
   readonly poi = examplePopup;
 
-  showovermap = false;
   showFilter = false;
+  showTree?: TreeMapMarker;
 
   center$ = new BehaviorSubject([51.95219038758362, 7.638897986978916]);
   position$!: Observable<MapMarker>;
@@ -72,12 +72,19 @@ export class MapComponent implements OnInit, ViewDidEnter {
     this.showFilter = !this.showFilter;
   }
 
-  setShowOverMap(show: boolean){
-    console.log(show);
-    this.showovermap = show;
+  setShowOverMap(tree: TreeMapMarker) {
+    this.showTree = tree;
   }
 
   centerChange(latLng2: LatLng) {
     this.center$.next([latLng2.lng, latLng2.lat]);
+  }
+
+  poiDataFromTree(tree: TreeMapMarker) {
+    return <PoiPopupData>{
+      imageUrl: '/assets/IMG_6612.jpg',
+      status: 'good',
+      treeFamily: tree.treeFamily,
+    };
   }
 }
