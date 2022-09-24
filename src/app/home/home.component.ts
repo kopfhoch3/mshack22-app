@@ -8,9 +8,8 @@ import {CardModel} from "../card/cardmodel.class";
 })
 export class HomeComponent {
   sampleCardData: CardModel[] = [
-    new CardModel(23, "Plantcare", 247),
-    new CardModel(23, "Plantcare", 247),
-    new CardModel(23, "Plantcare", 247),
-    new CardModel(23, "Plantcare", 247)
+    new CardModel(123, 'Plant Care', 127, 'assets/bild1.jpg'),
+    new CardModel(47, 'Waste Care', 19, 'assets/bild2.png'),
+    new CardModel(11, 'Waste Care', 11, 'assets/bild3.png'),
   ];
 }

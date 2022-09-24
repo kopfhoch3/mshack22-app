@@ -2,7 +2,7 @@
   <ion-list class="ion-no-padding">
     <ion-virtual-scroll [items]="this.sampleCards">
       <ion-item *virtualItem="let item" class="ion-no-padding item-native item-padding">
-        <app-card [data]="item"></app-card>
+        <app-card [data]="item" style="width: 100%"></app-card>
       </ion-item>
     </ion-virtual-scroll>
   </ion-list>

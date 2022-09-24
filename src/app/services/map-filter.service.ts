@@ -12,11 +12,11 @@ export type FilterToggleMap = Record<PoiType, boolean>;
 })
 export class MapFilterService {
   map = new BehaviorSubject(<FilterToggleMap>{
-    water: false,
-    waste: false,
+    water: true,
+    waste: true,
     tree: true,
-    shop: false,
-    gift: false,
+    shop: true,
+    gift: true,
   });
 
   constructor() {}

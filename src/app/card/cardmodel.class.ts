@@ -2,6 +2,7 @@ export class CardModel {
   constructor(
     public creationTime: number,
     public category: string,
-    public amountOfVotes: number
+    public amountOfVotes: number,
+    public imageUrl: string,
   ) {}
 }
