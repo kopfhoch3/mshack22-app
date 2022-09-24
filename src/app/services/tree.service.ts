@@ -10,6 +10,7 @@ import { Tree } from '../model/tree';
 })
 export class TreeService {
   private readonly url = `${environment.apiUrl}/trees`;
+  
   constructor(private readonly http: HttpClient) {}
 
   getAll$(): Observable<Tree[]> {

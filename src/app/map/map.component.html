@@ -4,6 +4,7 @@
     leaflet
     [leafletOptions]="options"
     (leafletCenterChange)="centerChange($event)"
+    (leafletMapReady)="loadMarkers($event)"
   >
     <app-map-marker
       *ngIf="position$ | async as pos"

@@ -26,3 +26,29 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @import "variables";
+
+.test {
+    background-color: white;
+    border-radius: 100%;
+
+    &, svg {
+        stroke: var(--color-primary);
+        color: var(--color-primary);
+    }
+
+    &.test-trash, &.test-trash svg {
+        stroke: var(--color-filter-waste);
+        color: var(--color-filter-waste);
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        box-shadow: 0 10px 8px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+}
