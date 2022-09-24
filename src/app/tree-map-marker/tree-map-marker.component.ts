@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  NgZone,
+} from '@angular/core';
 import {
   circle,
   icon,
@@ -11,8 +18,9 @@ import {
   Point,
 } from 'leaflet';
 import { MapMarker } from '../map-marker/map-marker.component';
+import { Tree } from '../model/tree';
 
-type TreeStatus = 'critical' | 'warn' | 'good';
+export type TreeStatus = 'critical' | 'warn' | 'good';
 
 export interface TreeMapMarker extends MapMarker {
   readonly status: TreeStatus;
@@ -28,6 +36,9 @@ export class TreeMapMarkerComponent implements OnInit {
   @Input()
   marker!: TreeMapMarker;
 
+  @Output()
+  showEmitter = new EventEmitter<TreeMapMarker>();
+
   layer!: Layer;
 
   private readonly treeIconMap = {
@@ -36,12 +47,16 @@ export class TreeMapMarkerComponent implements OnInit {
     critical: 'assets/marker/tree_critical.png',
   };
 
-  constructor() {}
+  constructor(private readonly ngZone: NgZone) {}
 
   ngOnInit() {
     this.layer = circle(latLng(this.marker.lat, this.marker.lng), {
       radius: 1,
       color: 'green',
+    }).on('click', () => {
+      this.ngZone.run(() => {
+        this.showEmitter.next(this.marker);
+      });
     });
   }
 }
