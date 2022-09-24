@@ -12,10 +12,15 @@ import { MapMarkerComponent } from './map-marker/map-marker.component';
 import { TreeMapMarkerComponent } from './tree-map-marker/tree-map-marker.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeviceIdInterceptorService } from './global/device-id-interceptor.service';
-import { FontAwesomeModule, FaIconLibrary, FaConfig } from '@fortawesome/angular-fontawesome';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+  FaConfig,
+} from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/pro-solid-svg-icons';
 import { fal } from '@fortawesome/pro-light-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { MapFilterComponent } from './map-filter/map-filter.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
     MapComponent,
     MapMarkerComponent,
     TreeMapMarkerComponent,
+    MapFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,13 +49,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
   bootstrap: [AppComponent],
 })
 export class AppModule {
-
   constructor(
     private readonly library: FaIconLibrary,
-    private readonly faConfig: FaConfig,
-    ) { 
-      this.faConfig.defaultPrefix = 'fal';
-		library.addIconPacks(fas, fab, fal);
-	}
-
+    private readonly faConfig: FaConfig
+  ) {
+    this.faConfig.defaultPrefix = 'fal';
+    library.addIconPacks(fas, fab, fal);
+  }
 }

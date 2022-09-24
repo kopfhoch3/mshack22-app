@@ -31,6 +31,8 @@ export class MapComponent implements OnInit, ViewDidEnter {
     center: latLng(51.95219038758362, 7.638897986978916),
   };
 
+  showFilter = false;
+
   position$!: Observable<MapMarker>;
   treesMarker$!: Observable<TreeMapMarker[]>;
 
@@ -58,5 +60,9 @@ export class MapComponent implements OnInit, ViewDidEnter {
 
   ionViewDidEnter(): void {
     setTimeout(() => this.map.getMap().invalidateSize(), 100);
+  }
+
+  toggleShowFilter() {
+    this.showFilter = !this.showFilter;
   }
 }

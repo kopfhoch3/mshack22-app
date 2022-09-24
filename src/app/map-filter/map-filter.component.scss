@@ -1,32 +1,9 @@
-.map {
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.content {
-  position: relative;
-}
-
-.filter {
-  position: absolute;
-  background-color: white;
-  bottom: 90px;
-  width: 100%;
-  z-index: 1;
-}
-
-.filter-switch {
-  position: absolute;
-  background-color: white;
-  bottom: 180px;
-  width: 100%;
+.filter-container {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
   margin-left: 1rem;
-  z-index: 1;
-
-  &.on {
-    bottom: calc(180px + 90px);
-  }
+  min-height: 6rem;
 }
 
 .primary-button {
@@ -49,5 +26,21 @@
   fa-icon {
     stroke: white;
     color: white;
+  }
+
+  &.water {
+    background-color: var(--color-filter-water);
+  }
+  &.waste {
+    background-color: var(--color-filter-waste);
+  }
+  &.gift {
+    background-color: var(--color-filter-gift);
+  }
+  &.tree {
+    background-color: var(--color-filter-tree);
+  }
+  &.shop {
+    background-color: var(--color-filter-shop);
   }
 }
