@@ -13,6 +13,10 @@ import { TreeMapMarkerComponent } from './tree-map-marker/tree-map-marker.compon
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeviceIdInterceptorService } from './global/device-id-interceptor.service';
 import { PoiPopupComponent } from './poi-popup/poi-popup.component';
+import { FontAwesomeModule, FaIconLibrary, FaConfig } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/pro-solid-svg-icons';
+import { fal } from '@fortawesome/pro-light-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { PoiPopupComponent } from './poi-popup/poi-popup.component';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FontAwesomeModule,
     LeafletModule,
     HttpClientModule,
   ],
@@ -39,4 +44,14 @@ import { PoiPopupComponent } from './poi-popup/poi-popup.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(
+    private readonly library: FaIconLibrary,
+    private readonly faConfig: FaConfig,
+    ) {
+      this.faConfig.defaultPrefix = 'fal';
+		library.addIconPacks(fas, fab, fal);
+	}
+
+}

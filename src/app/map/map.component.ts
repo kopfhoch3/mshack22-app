@@ -8,13 +8,9 @@ import { map } from 'rxjs/operators';
 import { DeviceInformationService } from '../device-information.service';
 import { MapMarker } from '../map-marker/map-marker.component';
 import { examplePopup } from '../poi-popup/poi-popup.component';
+import { Tree } from '../model/tree';
+import { TreeService } from '../services/tree.service';
 import { TreeMapMarker } from '../tree-map-marker/tree-map-marker.component';
-
-const ms: TreeMapMarker = {
-  lat: 51.58,
-  lng: 7.38,
-  status: 'good',
-};
 
 @Component({
   selector: 'app-map',
@@ -32,23 +28,35 @@ export class MapComponent implements OnInit, ViewDidEnter {
         attribution: 'MS-Hack-22 Nachhaltigkeitsapp',
       }),
     ],
-    zoom: 10,
-    center: latLng(51.58, 7.38),
+    zoom: 15,
+    center: latLng(51.95219038758362, 7.638897986978916),
   };
 
-  readonly msMarker = ms;
   readonly poi = examplePopup;
 
   position$!: Observable<MapMarker>;
+  treesMarker$!: Observable<TreeMapMarker[]>;
 
   constructor(
-    private readonly deviceInformationService: DeviceInformationService
+    private readonly deviceInformationService: DeviceInformationService,
+    private readonly treeService: TreeService
   ) {}
 
   ngOnInit() {
     this.position$ = this.deviceInformationService
       .getCurrentLocation()
       .pipe(map((p) => ({ lat: p.coords.latitude, lng: p.coords.longitude })));
+
+    this.treesMarker$ = this.treeService.getAll$().pipe(
+      map((trees) =>
+        trees.map((t) => ({
+          lat: t.coordinates[1],
+          lng: t.coordinates[0],
+          status: 'good',
+          treeFamily: t.treeFamily,
+        }))
+      )
+    );
   }
 
   ionViewDidEnter(): void {

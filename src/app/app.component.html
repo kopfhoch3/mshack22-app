@@ -1,46 +1,25 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>{{deviceId}}</ion-list-header>
-          <ion-note>{{currentLocation?.coords?.latitude ?? 0}} {{currentLocation?.coords?.longitude ?? 0}}</ion-note>
-
-          <ion-menu-toggle
-            auto-hide="false"
-            *ngFor="let p of appPages; let i = index"
-          >
-            <ion-item
-              routerDirection="root"
-              [routerLink]="[p.url]"
-              lines="none"
-              detail="false"
-              routerLinkActive="selected"
-            >
-              <ion-icon
-                slot="start"
-                [ios]="p.icon + '-outline'"
-                [md]="p.icon + '-sharp'"
-              ></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon
-              slot="start"
-              ios="bookmark-outline"
-              md="bookmark-sharp"
-            ></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+        <nav>
+          <a routerLink="home" routerLinkActive="selected">
+            <fa-icon icon="house" size="2xl"></fa-icon>
+          </a>
+          <a routerLink="map" routerLinkActive="selected">
+            <fa-icon icon="map-location-dot" size="2xl"></fa-icon>
+          </a>
+          <a routerLink="camera" routerLinkActive="selected"
+            class="primary-button">
+              <fa-icon icon="plus" size="2xl"></fa-icon>
+          </a>
+          <a routerLink="profile" routerLinkActive="selected">
+            <fa-icon icon="user" size="2xl"></fa-icon>
+          </a>
+          <a routerLink="settings" routerLinkActive="selected">
+            <fa-icon icon="gear" size="2xl"></fa-icon>
+          </a>
+        </nav>
       </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+    
+  
 </ion-app>

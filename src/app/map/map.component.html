@@ -4,8 +4,10 @@
       *ngIf="position$ | async as pos"
       [marker]="pos"
     ></app-map-marker>
-    <app-map-marker [marker]="msMarker"></app-map-marker>
-    <app-tree-map-marker [marker]="msMarker"></app-tree-map-marker>
+    <app-tree-map-marker
+      *ngFor="let t of treesMarker$ | async"
+      [marker]="t"
+    ></app-tree-map-marker>
   </div>
   <app-poi-popup [data]="poi"></app-poi-popup>
 </ion-content>
