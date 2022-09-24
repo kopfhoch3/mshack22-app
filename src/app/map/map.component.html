@@ -8,6 +8,6 @@
       *ngFor="let t of treesMarker$ | async"
       [marker]="t"
     ></app-tree-map-marker>
+    <app-poi-popup [data]="poi" class="poi"></app-poi-popup>
   </div>
-  <app-poi-popup [data]="poi"></app-poi-popup>
 </ion-content>
