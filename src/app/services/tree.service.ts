@@ -9,12 +9,18 @@ import { Tree } from '../model/tree';
   providedIn: 'root',
 })
 export class TreeService {
-  private readonly url = `${environment.apiUrl}/tree`;
+  private readonly url = `${environment.apiUrl}/trees`;
   constructor(private readonly http: HttpClient) {}
 
   getAll$(): Observable<Tree[]> {
     return this.http
       .get<Tree[]>(this.url + '/all')
       .pipe(catchError(() => of([])));
+  }
+
+  getByRadius$(x: number, y: number, radius: number): Observable<Tree[]> {
+    return this.http.get<Tree[]>(this.url, {
+      params: { x, y, radius },
+    });
   }
 }
