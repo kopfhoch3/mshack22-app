@@ -1,0 +1,10 @@
+.bg-white {
+  background-color: white;
+}
+
+.item-native {
+  background-color: white;
+  &.item-inner {
+    background-color: white;
+  }
+}

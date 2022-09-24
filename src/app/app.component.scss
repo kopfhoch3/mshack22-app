@@ -33,7 +33,7 @@ nav {
       background-color: darken(white, 10%);
     }
   }
-  
+
   fa-icon {
     stroke: gray;
     color: gray;
@@ -128,4 +128,8 @@ head {
       left: 0;
     }
   }
+}
+
+.bg-white {
+  background-color: white;
 }

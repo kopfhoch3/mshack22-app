@@ -23,10 +23,20 @@ import { fal } from '@fortawesome/pro-light-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { MapFilterComponent } from './map-filter/map-filter.component';
 import { FeedSelectorComponent } from './feed-selector/feed-selector.component';
+import {CardComponent} from './card/card.component';
+import {CommonModule} from "@angular/common";
+import {HomeComponent} from "./home/home.component";
+import {ScrollingModule} from "@angular/cdk/scrolling";
+import {CardListComponent} from "./card-list/card-list.component";
+import {FeedNavigationComponent} from "./feed-navigation/feed-navigation.component";
 
 @NgModule({
   declarations: [
+    CardComponent,
+    CardListComponent,
+    FeedNavigationComponent,
     AppComponent,
+    HomeComponent,
     MapComponent,
     MapMarkerComponent,
     TreeMapMarkerComponent,
@@ -35,12 +45,14 @@ import { FeedSelectorComponent } from './feed-selector/feed-selector.component';
     FeedSelectorComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     FontAwesomeModule,
     LeafletModule,
     HttpClientModule,
+    ScrollingModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -1,0 +1,42 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-full py-2.5 px-2.5 sm:px-6 lg:px-8 lg:py-24">
+    <div class="space-y-12">
+      <div role="list" class="grid grid-cols-1 gap-x-6 gap-y-12 space-y-12">
+        <div>
+          <div class="space-y-3">
+            <div class="aspect-w-3 aspect-h-3 relative">
+              <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=550&q=80" alt="" />
+              <div class="absolute left-3 top-3">
+                <div class="inline-flex justify-between rounded-full bg-gray-400 bg-opacity-50 px-4 py-1 text-sm font-medium leading-5 text-white shadow-sm hover:bg-gray-50 sm:px-1">
+                  <div>
+                    <span>{{ this.formatToTimeExtension() }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute right-3 top-3">
+                <div class="inline-flex justify-between rounded-full bg-green-600 bg-opacity-40 px-4 py-1 text-sm font-medium leading-5 text-white shadow-sm hover:bg-gray-50">
+                  <div>
+                    <span>{{ this.data.category }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fill-white">
+                <div class="absolute right-3 top-1/2 -my-9 items-center justify-center rounded-t-lg rounded-b-lg bg-gray-300 bg-opacity-30 pr-1">
+                  <!-- Arrow up -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 pl-1" viewBox="0 0 512 512">
+                    <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+                  </svg>
+                  <p class="pl-1 text-center text-lg font-bold text-white">123</p>
+                  <!-- Arrow down -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 pl-1" viewBox="0 0 512 512">
+                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
