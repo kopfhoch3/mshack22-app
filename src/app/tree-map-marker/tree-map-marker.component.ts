@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  NgZone,
+} from '@angular/core';
 import {
   circle,
   icon,
@@ -41,12 +48,17 @@ export class TreeMapMarkerComponent implements OnInit {
     critical: 'assets/marker/tree_critical.png',
   };
 
-  constructor() {}
+  constructor(private readonly ngZone: NgZone) {}
 
   ngOnInit() {
     this.layer = circle(latLng(this.marker.lat, this.marker.lng), {
       radius: 1,
       color: 'green',
-    }).on('click', () => {this.showS = !this.showS; this.showEmitter.emit(this.showS);console.log('hi');});
+    }).on('click', () => {
+      this.ngZone.run(() => {
+        this.showS = !this.showS;
+        this.showEmitter.emit(this.showS);
+      });
+    });
   }
 }
