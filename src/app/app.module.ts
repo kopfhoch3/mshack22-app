@@ -21,6 +21,8 @@ import { fas } from '@fortawesome/pro-solid-svg-icons';
 import { fal } from '@fortawesome/pro-light-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { MapFilterComponent } from './map-filter/map-filter.component';
+import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
+import { TreeMapClusterComponent } from './tree-map-cluster/tree-map-cluster.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { MapFilterComponent } from './map-filter/map-filter.component';
     MapComponent,
     MapMarkerComponent,
     TreeMapMarkerComponent,
+    TreeMapClusterComponent,
     MapFilterComponent,
   ],
   imports: [
@@ -36,6 +39,7 @@ import { MapFilterComponent } from './map-filter/map-filter.component';
     AppRoutingModule,
     FontAwesomeModule,
     LeafletModule,
+    LeafletMarkerClusterModule,
     HttpClientModule,
   ],
   providers: [

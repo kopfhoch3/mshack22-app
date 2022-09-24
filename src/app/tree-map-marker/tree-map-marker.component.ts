@@ -1,16 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  circle,
-  icon,
-  Icon,
-  latLng,
-  Layer,
-  LayerGroup,
-  layerGroup,
-  marker,
-  Point,
-} from 'leaflet';
+import { Layer } from 'leaflet';
 import { MapMarker } from '../map-marker/map-marker.component';
+import { createTreeMapMarker } from './tree-map-marker.service';
 
 type TreeStatus = 'critical' | 'warn' | 'good';
 
@@ -39,9 +30,6 @@ export class TreeMapMarkerComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.layer = circle(latLng(this.marker.lat, this.marker.lng), {
-      radius: 1,
-      color: 'green',
-    });
+    this.layer = createTreeMapMarker(this.marker);
   }
 }
