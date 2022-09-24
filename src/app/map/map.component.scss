@@ -19,13 +19,13 @@
 .filter-switch {
   position: absolute;
   background-color: white;
-  bottom: 180px;
+  bottom: 90px;
   width: 100%;
   margin-left: 1rem;
   z-index: 1;
 
   &.on {
-    bottom: calc(180px + 90px);
+    bottom: calc(90px + 90px);
   }
 }
 

@@ -19,10 +19,6 @@
   border-radius: 100%;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
-  &:hover {
-    background-color: var(--color-primary-light) !important;
-  }
-
   fa-icon {
     stroke: white;
     color: white;
@@ -30,20 +26,38 @@
 
   &.water {
     background-color: var(--color-filter-water);
+    &:hover {
+      background-color: var(--color-filter-water-light);
+    }
   }
   &.waste {
     background-color: var(--color-filter-waste);
+    &:hover {
+      background-color: var(--color-filter-waste-light);
+    }
   }
   &.gift {
     background-color: var(--color-filter-gift);
+    &:hover {
+      background-color: var(--color-filter-gift-light);
+    }
   }
   &.tree {
     background-color: var(--color-filter-tree);
+    &:hover {
+      background-color: var(--color-filter-tree-light);
+    }
   }
   &.shop {
     background-color: var(--color-filter-shop);
+    &:hover {
+      background-color: var(--color-filter-shop-light);
+    }
   }
   &.inactive {
     background-color: gray !important;
+    &:hover {
+      background-color: lightgray !important;
+    }
   }
 }
