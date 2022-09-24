@@ -4,6 +4,7 @@
     leaflet
     [leafletOptions]="options"
     (leafletCenterChange)="centerChange($event)"
+    (leafletMapReady)="loadMarkers($event)"
     (click)="showTree = undefined"
   >
     <app-map-marker

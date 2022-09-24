@@ -71,8 +71,9 @@ head {
   grid-template-rows: auto;
   background-color: white;
   justify-content: center;
-  align-items: center;
-  height: 80px;
+  align-items: end;
+  padding-bottom: 30px;
+  height: 150px;
   position: fixed;
   z-index: 99;
   width: 100%;
