@@ -1,0 +1,10 @@
+<div class="filter-container" *ngIf="filterMap$ | async as filterMap">
+  <div
+    class="primary-button"
+    *ngFor="let f of filter"
+    (click)="patchFilter(f.name, filterMap)"
+    [ngClass]="filterClass(f.name, !filterMap[f.name])"
+  >
+    <fa-icon [icon]="f.icon" size="2xl"></fa-icon>
+  </div>
+</div>

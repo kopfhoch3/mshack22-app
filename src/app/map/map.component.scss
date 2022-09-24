@@ -1,6 +1,55 @@
 .map {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 90px);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+}
+
+.filter {
+  position: absolute;
+  background-color: white;
+  bottom: 90px;
+  width: 100%;
+  z-index: 1;
+}
+
+.filter-switch {
+  position: absolute;
+  background-color: white;
+  bottom: 90px;
+  width: 100%;
+  margin-left: 1rem;
+  z-index: 1;
+
+  &.on {
+    bottom: calc(90px + 90px);
+  }
+}
+
+.primary-button {
+  color: white;
+  background-color: var(--color-primary);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  border-radius: 100%;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  &:hover {
+    background-color: var(--color-primary-light);
+  }
+
+  fa-icon {
+    stroke: white;
+    color: white;
+  }
 }
 
 .poi {

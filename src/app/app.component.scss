@@ -63,3 +63,68 @@ nav {
     }
   }
 }
+
+head {
+  display: grid;
+  grid-template-areas: ". location hearts";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  .location-badge {
+    background-color: var(--color-primary);
+    stroke: white;
+    color: white;
+    grid-area: location;
+    text-align: center;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    justify-self: center;
+
+    fa-icon {
+      display: inline-block;
+      margin-right: 5px;
+    }
+  }
+
+  .hearts {
+    justify-self: center;
+    position: relative;
+    grid-area: hearts;
+    width: 48px;
+    height: 48px;
+
+    fa-icon {
+      width: 48px;
+      height: 48px;
+      stroke: var(--color-primary);
+      color: var(--color-primary);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    span {
+      color: var(--color-primary);
+      font-size: 15px;
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 42px;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
