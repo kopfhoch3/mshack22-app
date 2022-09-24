@@ -34,6 +34,7 @@ export class MapComponent implements OnInit, ViewDidEnter {
 
   readonly poi = examplePopup;
 
+  showovermap = false;
   showFilter = false;
 
   center$ = new BehaviorSubject([51.95219038758362, 7.638897986978916]);
@@ -69,6 +70,11 @@ export class MapComponent implements OnInit, ViewDidEnter {
 
   toggleShowFilter() {
     this.showFilter = !this.showFilter;
+  }
+
+  setShowOverMap(show: boolean){
+    console.log(show);
+    this.showovermap = show;
   }
 
   centerChange(latLng2: LatLng) {

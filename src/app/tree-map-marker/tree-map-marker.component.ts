@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {
   circle,
   icon,
@@ -28,6 +28,11 @@ export class TreeMapMarkerComponent implements OnInit {
   @Input()
   marker!: TreeMapMarker;
 
+  @Output()
+  showEmitter = new EventEmitter<boolean>();
+
+  showS = false;
+
   layer!: Layer;
 
   private readonly treeIconMap = {
@@ -42,6 +47,6 @@ export class TreeMapMarkerComponent implements OnInit {
     this.layer = circle(latLng(this.marker.lat, this.marker.lng), {
       radius: 1,
       color: 'green',
-    });
+    }).on('click', () => {this.showS = !this.showS; this.showEmitter.emit(this.showS);console.log('hi');});
   }
 }

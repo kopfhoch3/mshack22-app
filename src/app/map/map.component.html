@@ -12,8 +12,9 @@
     <app-tree-map-marker
       *ngFor="let t of treesMarker$ | async"
       [marker]="t"
+      (showEmitter)="setShowOverMap($event)"
     ></app-tree-map-marker>
-    <app-poi-popup [data]="poi" class="poi"></app-poi-popup>
+    <app-poi-popup *ngIf="showovermap" [data]="poi" class="poi"></app-poi-popup>
   </div>
   <div
     class="primary-button filter-switch"
